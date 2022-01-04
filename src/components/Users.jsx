@@ -6,11 +6,12 @@ const Users = () => {
   const [users, setUsers] = useState([]);
 
   const addUserHandler = user => setUsers(previous => [user, ...previous]);
+  const onDeleteHandler = id => setUsers(previous => previous.filter(user => user.id !== id));
 
   return (
     <div>
       <UserForm onAddUser={addUserHandler} />
-      <UsersList items={users} />
+      <UsersList items={users} onDelete={onDeleteHandler} />
     </div>
   );
 };

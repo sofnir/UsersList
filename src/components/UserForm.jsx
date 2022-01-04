@@ -56,12 +56,10 @@ const UserForm = (props) => {
         <button type="submit">Add User</button>
       </form>
       <dialog open={showValidationDialog}>
-        <p>
-          {validationMessage}
-          <menu>
-            <button onClick={closeDialog}>Okay</button>
-          </menu>
-        </p>
+        <p>{validationMessage}</p>
+        <menu>
+          <button onClick={closeDialog}>Okay</button>
+        </menu>
       </dialog>
     </div>
   );
