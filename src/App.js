@@ -1,11 +1,9 @@
 import './App.css';
-import UserForm from './components/UserForm';
+import Users from './components/Users';
 
 function App() {
   return (
-    <div className="App">
-      <UserForm />
-    </div>
+    <div className="App"><Users /></div>
   );
 }
 
