@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
+import ErrorModal from "../UI/ErrorModal";
 import classes from "./UserForm.module.css";
 
 const UserForm = (props) => {
   const [username, setUsername] = useState('');
   const [age, setAge] = useState('');
-  const [showValidationDialog, setShowValidationDialog] = useState(false);
-  const [validationMessage, setValidationMessage] = useState();
+  const [error, setError] = useState();
 
   const formSubmitHandler = event => {
     event.preventDefault();
 
     if (username.trim().length === 0 || age.trim().length === 0) {
-      setValidationMessage("Please enter a valid name and age (non-empty values).");
-      setShowValidationDialog(true);
+      setError({
+        title: "Invalid input",
+        message: "Please enter a valid name and age (non-empty values)."
+      });
     } else if (+age <= 0) {
-      setValidationMessage("Please enter a valid age (> 0).");
-      setShowValidationDialog(true);
+      setError({
+        title: "Invalid age",
+        message: "Please enter a valid age (> 0)."
+      });
     } else {
       const user = {
         id: Math.random().toString(),
@@ -32,7 +36,7 @@ const UserForm = (props) => {
     }
   };
 
-  const closeDialog = () => setShowValidationDialog(false);
+  const closeDialog = () => setError(null);
 
   const usernameChangeHandler = event => setUsername(event.target.value);
   const ageChangeHandler = event => setAge(event.target.value);
@@ -58,12 +62,7 @@ const UserForm = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-      <dialog open={showValidationDialog}>
-        <p>{validationMessage}</p>
-        <menu>
-          <button onClick={closeDialog}>Okay</button>
-        </menu>
-      </dialog>
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={closeDialog} />}
     </div>
   );
 };
