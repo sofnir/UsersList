@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Card from "../UI/Card";
+import classes from "./UserForm.module.css";
 
 const UserForm = (props) => {
   const [username, setUsername] = useState('');
@@ -36,25 +38,25 @@ const UserForm = (props) => {
 
   return (
     <div>
-      <form onSubmit={formSubmitHandler}>
-        <div>
-          <label>Username</label>
+      <Card className={classes.input}>
+        <form onSubmit={formSubmitHandler}>
+          <label htmlFor="username">Username</label>
           <input
+            id="username"
             type="text"
             value={username}
             onChange={usernameChangeHandler}
           />
-        </div>
-        <div>
-          <label>Age (Years)</label>
+          <label htmlFor="age">Age (Years)</label>
           <input
+            id="age"
             type="number"
             value={age}
             onChange={ageChangeHandler}
           />
-        </div>
-        <button type="submit">Add User</button>
-      </form>
+          <button type="submit">Add User</button>
+        </form>
+      </Card>
       <dialog open={showValidationDialog}>
         <p>{validationMessage}</p>
         <menu>
