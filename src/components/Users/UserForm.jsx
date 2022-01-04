@@ -12,10 +12,10 @@ const UserForm = (props) => {
   const formSubmitHandler = event => {
     event.preventDefault();
 
-    if (username === '' || age === '') {
+    if (username.trim().length === 0 || age.trim().length === 0) {
       setValidationMessage("Please enter a valid name and age (non-empty values).");
       setShowValidationDialog(true);
-    } else if (age <= 0) {
+    } else if (+age <= 0) {
       setValidationMessage("Please enter a valid age (> 0).");
       setShowValidationDialog(true);
     } else {

@@ -5,7 +5,7 @@ const UserItem = (props) => {
 
   return (
     <li onClick={deleteHandler}>
-      {props.username} ({props.age})
+      {props.username} ({props.age} years old)
     </li>
   );
 };
