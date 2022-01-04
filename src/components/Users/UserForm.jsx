@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../UI/Button";
 import Card from "../UI/Card";
 import classes from "./UserForm.module.css";
 
@@ -54,7 +55,7 @@ const UserForm = (props) => {
             value={age}
             onChange={ageChangeHandler}
           />
-          <button type="submit">Add User</button>
+          <Button type="submit">Add User</Button>
         </form>
       </Card>
       <dialog open={showValidationDialog}>
